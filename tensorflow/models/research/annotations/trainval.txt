@@ -1,0 +1,10 @@
+yellow_buoy_1 1
+yellow_buoy_2 1
+yellow_buoy_3 1
+yellow_buoy_4 1
+yellow_buoy_5 1
+yellow_buoy_6 1
+yellow_buoy_7 1
+yellow_buoy_8 1
+yellow_buoy_9 1
+yellow_buoy_10 1
