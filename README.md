@@ -3,6 +3,7 @@
  Members:
  * Iordanis Fostiropoulos
  * Jaimin Upadhyay
+ * Hejia Zhang
 
 ### Setting up Guide
 
