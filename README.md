@@ -4,6 +4,7 @@
  * Iordanis Fostiropoulos
  * Jaimin Upadhyay
  * Hejia Zhang
+ * Matthew Fala
 
 ### Setting up Guide
 
