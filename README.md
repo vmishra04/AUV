@@ -6,6 +6,7 @@
  * Hejia Zhang
  * Matthew Fala
  * Vivek Mishra
+ * Frank Pang
 
 ### Setting up Guide
 
