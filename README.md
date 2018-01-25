@@ -2,6 +2,7 @@
 
  Members:
  * Iordanis Fostiropoulos
+ * Jaimin Upadhyay
 
 ### Setting up Guide
 
