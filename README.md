@@ -5,6 +5,7 @@
  * Jaimin Upadhyay
  * Hejia Zhang
  * Matthew Fala
+ * Vivek Mishra
 
 ### Setting up Guide
 
