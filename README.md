@@ -7,7 +7,9 @@
  * Matthew Fala
  * Vivek Mishra
  * Frank Pang
-
+ * Kai Yang
+ * Xijia Chen
+ * Zhiyuan Xu
 ### Setting up Guide
 
 Windows:
