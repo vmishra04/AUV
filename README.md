@@ -10,6 +10,7 @@
  * Kai Yang
  * Xijia Chen
  * Zhiyuan Xu
+ * Yifan Meng
 ### Setting up Guide
 
 Windows:
