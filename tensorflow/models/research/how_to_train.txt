@@ -1,0 +1,33 @@
+These are the commands I use to train the model. Feel free to use these
+or to edit them/use your own.
+
+Anywhere where it says yellow_buoy2_pl, make sure to replace that with
+your own Google cloud bucket
+
+I wrote this after following this link:
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_cloud.md
+The main change is that we're using 1.4 instead of 1.2.
+
+For training:
+gcloud ml-engine jobs submit training object_detection_`date +%s`
+  --runtime-version 1.4 --job-dir=gs://yellow_buoy2_pl/train
+  --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz
+  --module-name object_detection.train
+  --region us-central1
+  --config auv_cloud.yml
+  --
+  --train_dir=gs://yellow_buoy2_pl/train
+  --pipeline_config_path=gs://yellow_buoy2_pl/data/faster_rcnn_resnet101_auv.config
+
+For evaluation:
+gcloud ml-engine jobs submit training object_detection_eval_`date +%s`
+  --runtime-version 1.4
+  --job-dir=gs://yellow_buoy_pl/train
+  --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz
+  --module-name object_detection.eval
+  --region us-central1
+  --scale-tier BASIC_GPU
+  --
+  --checkpoint_dir=gs://yellow_buoy_pl/train
+  --eval_dir=gs://yellow_buoy_pl/eval
+  --pipeline_config_path=gs://yellow_buoy_pl/data/faster_rcnn_resnet101_auv.config
