@@ -13,7 +13,9 @@
 # limitations under the License.
 # ==============================================================================
 
-"""Convert the Oxford pet dataset to TFRecord for object_detection.
+"""Modidifed conversion script used for the Oxford pet dataset to TFRecord
+
+USC AUV
 
 See: O. M. Parkhi, A. Vedaldi, A. Zisserman, C. V. Jawahar
      Cats and Dogs
@@ -21,9 +23,10 @@ See: O. M. Parkhi, A. Vedaldi, A. Zisserman, C. V. Jawahar
      http://www.robots.ox.ac.uk/~vgg/data/pets/
 
 Example usage:
-    python object_detection/dataset_tools/create_pet_tf_record.py \
-        --data_dir=/home/user/pet \
-        --output_dir=/home/user/pet/output
+    python create_ybuoy_tf_record.py
+        --label_map_path=auv_label_map.pbtxt
+        --data_dir=`pwd`
+        --output_dir=`pwd`
 """
 
 import hashlib
