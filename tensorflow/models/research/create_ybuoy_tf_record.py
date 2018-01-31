@@ -283,10 +283,10 @@ def main(_):
                len(train_examples), len(val_examples))
 
   train_output_path = os.path.join(FLAGS.output_dir, 'ybuoy_train.record')
-  val_output_path = os.path.join(FLAGS.output_dir, 'ybouy_val.record')
+  val_output_path = os.path.join(FLAGS.output_dir, 'ybuoy_val.record')
   # if FLAGS.faces_only:
   #   train_output_path = os.path.join(FLAGS.output_dir,
-  #                                    'ybouy_train_with_masks.record')
+  #                                    'ybuoy_train_with_masks.record')
   #   val_output_path = os.path.join(FLAGS.output_dir,
   #                                  'ybuoy_val_with_masks.record')
   create_tf_record(train_output_path, label_map_dict, annotations_dir,
