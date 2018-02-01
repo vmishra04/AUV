@@ -1,0 +1,4 @@
+# produced file
+*.tar.gz
+*.record
+*.pyc
