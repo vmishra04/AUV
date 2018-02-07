@@ -1,16 +1,18 @@
 These are the commands I use to train the model. Feel free to use these
-or to edit them/use your own.
+or to edit them/use your own. Note that this is not a complete tutorial,
+just the commands to run the training, a document detailing the rest of the
+steps is still being written.
 
-Anywhere where it says yellow_buoy2_pl, make sure to replace that with
+IMPORTANT:Anywhere where it says yellow_buoy2_pl, make sure to replace that with
 your own Google cloud bucket
 
 I wrote these commands after following this link:
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_cloud.md
-The main change is that we're using 1.4 instead of 1.2.
+**DONT USE 1.4, it gives an error, and you should use 1.2 instead
 
 For training:
 gcloud ml-engine jobs submit training object_detection_`date +%s`
-  --runtime-version 1.4
+  --runtime-version 1.2
   --job-dir=gs://yellow_buoy2_pl/train
   --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz
   --module-name object_detection.train
@@ -22,7 +24,7 @@ gcloud ml-engine jobs submit training object_detection_`date +%s`
 
 For evaluation:
 gcloud ml-engine jobs submit training object_detection_eval_`date +%s`
-  --runtime-version 1.4
+  --runtime-version 1.2
   --job-dir=gs://yellow_buoy_pl/train
   --packages dist/object_detection-0.1.tar.gz,slim/dist/slim-0.1.tar.gz
   --module-name object_detection.eval
