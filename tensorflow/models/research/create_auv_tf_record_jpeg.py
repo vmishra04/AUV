@@ -23,7 +23,7 @@ See: O. M. Parkhi, A. Vedaldi, A. Zisserman, C. V. Jawahar
      http://www.robots.ox.ac.uk/~vgg/data/pets/
 
 Example usage:
-    python create_ybuoy_tf_record.py
+    python create_auv_tf_record_jpeg.py
         --label_map_path=auv_label_map.pbtxt
         --data_dir=`pwd`
         --output_dir=`pwd`
@@ -66,7 +66,7 @@ def get_class_name_from_filename(file_name):
   Returns:
     A string of the class name.
   """
-  match = re.match(r'([A-Za-z_]+)(_[0-9]+\.png)', file_name, re.I)
+  match = re.match(r'([A-Za-z_]+)(_[0-9]+\.jpg)', file_name, re.I)
   return match.groups()[0]
 
 
@@ -99,14 +99,15 @@ def dict_to_tf_example(data,
   """
   img_path = os.path.join(image_subdirectory, data['filename'])
   with tf.gfile.GFile(img_path, 'rb') as fid:
-    encoded_png = fid.read()
-  encoded_png_io = io.BytesIO(encoded_png)
-  image = PIL.Image.open(encoded_png_io)
-  if image.format != 'PNG':
-    raise ValueError('Image format not PNG')
-  key = hashlib.sha256(encoded_png).hexdigest()
+    encoded_jpg = fid.read()
+  encoded_jpg_io = io.BytesIO(encoded_jpg)
+  image = PIL.Image.open(encoded_jpg_io)
+  if image.format != 'JPEG':
+    raise ValueError('Image format not JPEG')
+  key = hashlib.sha256(encoded_jpg).hexdigest()
 
-  # taking this out for now
+  # taking this out for now, if you want to use this, make sure to change
+  #png to jpg
   # with tf.gfile.GFile(mask_path, 'rb') as fid:
   #   encoded_mask_png = fid.read()
   # encoded_png_io = io.BytesIO(encoded_mask_png)
@@ -205,8 +206,8 @@ def dict_to_tf_example(data,
     'image/source_id': dataset_util.bytes_feature(
         data['filename'].encode('utf8')),
     'image/key/sha256': dataset_util.bytes_feature(key.encode('utf8')),
-    'image/encoded': dataset_util.bytes_feature(encoded_png),
-    'image/format': dataset_util.bytes_feature('png'.encode('utf8')),
+    'image/encoded': dataset_util.bytes_feature(encoded_jpg),
+    'image/format': dataset_util.bytes_feature('jpeg'.encode('utf8')),
     'image/object/bbox/xmin': dataset_util.float_list_feature(xmins),
     'image/object/bbox/xmax': dataset_util.float_list_feature(xmaxs),
     'image/object/bbox/ymin': dataset_util.float_list_feature(ymins),
@@ -285,8 +286,8 @@ def main(_):
   logging.info('%d training and %d validation examples.',
                len(train_examples), len(val_examples))
 
-  train_output_path = os.path.join(FLAGS.output_dir, 'ybuoy_train.record')
-  val_output_path = os.path.join(FLAGS.output_dir, 'ybuoy_val.record')
+  train_output_path = os.path.join(FLAGS.output_dir, 'auv_train.record')
+  val_output_path = os.path.join(FLAGS.output_dir, 'auv_val.record')
   # if FLAGS.faces_only:
   #   train_output_path = os.path.join(FLAGS.output_dir,
   #                                    'ybuoy_train_with_masks.record')
