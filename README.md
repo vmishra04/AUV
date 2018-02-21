@@ -11,6 +11,7 @@
  * Xijia Chen
  * Zhiyuan Xu
  * Yifan Meng
+ * Zeyu Li
 ### Setting up Guide
 
 Windows:
