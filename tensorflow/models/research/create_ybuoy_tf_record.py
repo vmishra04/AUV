@@ -23,10 +23,7 @@ See: O. M. Parkhi, A. Vedaldi, A. Zisserman, C. V. Jawahar
      http://www.robots.ox.ac.uk/~vgg/data/pets/
 
 Example usage:
-    python create_ybuoy_tf_record.py
-        --label_map_path=auv_label_map.pbtxt
-        --data_dir=`pwd`
-        --output_dir=`pwd`
+    python create_ybuoy_tf_record.py --label_map_path=auv_label_map.pbtxt --data_dir=`pwd` --output_dir=`pwd`
 """
 
 import hashlib
